@@ -1,0 +1,91 @@
+<app-header />
+<section class="">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-10">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="fw-normal mb-0">Order Cart</h3>
+                    <div>
+                        <button *ngIf="sortToggle" type="button" class="btn btn-warning mt-2" (click)="sortMenuItems()" ><i class="bi bi-filter"></i> Price: Low to High <i class="bi bi-arrow-down"></i></button>
+                        <button *ngIf="!sortToggle" type="button" class="btn btn-warning mt-2" (click)="sortMenuItems()" ><i class="bi bi-filter"></i> Price: High to Low <i class="bi bi-arrow-up"></i></button>
+                    </div>
+                </div>
+                <div class="card rounded-3 mb-4">
+                    <div class="card-body p-4">
+                        <div class="mx-auto" style="color: darkgrey; font-size: large;"><span
+                                *ngIf="cartItems$.cartItems.length===0">no items in cart</span></div>
+                        <div class="row d-flex justify-content-between align-items-center"
+                            *ngFor="let item of cartItems$.cartItems">
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                <img [src]="imageUrl"
+                                    class="item-image img-fluid rounded-3" alt="Cotton T-shirt">
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                <p class="lead fw-normal mb-2">{{item.item_name}}</p>
+                                <p><span class="text-muted">{{item.item_description}}</span></p>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                <input id="form1" min="1" name="quantity" value="1" type="number"
+                                class="form-control form-control-sm ps-5" [(ngModel)]="item.quantity" (ngModelChange)="updateQuantity(item, item.quantity)"/>
+                              </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h5 class="mb-0">{{item.item_price}}$</h5>
+                            </div>
+                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                <button class="btn btn-lg text-danger" style="margin-right: 200px;"
+                                    (click)="removeItem(item)"><i class="bi bi-trash-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-4" *ngIf="cartItems$.cartItems.length!==0">
+                    <form [formGroup]="couponForm" (ngSubmit)="onSubmit()">
+                        <div class="card-body p-4 d-flex flex-row">
+                            <div data-mdb-input-init class="form-outline flex-fill">
+                                <input type="text" id="form1" class="form-control form-control-lg"
+                                    placeholder="Discount code" formControlName="couponCode" />
+                            </div>
+                            <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                                class="btn btn-outline-warning btn-lg ms-3">Apply</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card" *ngIf="cartItems$.cartItems.length!==0">
+                    <div class="card-body d-flex justify-content-between">
+                        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-block btn-lg" (click)="placeOrder()">Checkout</button>
+                        <p style="font-size: x-large;margin-right: 120px;font-weight: bold;">
+                            <span class="text-muted">Total </span><span class="text-muted">{{getTotal(discount)}}$</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="cartItems$.cartItems.length !== 0" class="row my-3">
+        <div class="d-flex justify-content-around py-3">
+            <h2>Popular Coupons</h2>
+            <a href="" class="text-decoration-none" routerLink="/coupons">Show all Coupons <i class="fa-solid fa-caret-right"></i></a>
+        </div>
+        <div class="profile-container d-flex row">
+            <div class="card coupon-card">
+                <div class="main">
+                  <div class="co-img">
+                    <img src="images/fooddelivery.png" alt="">
+                  </div>
+                  <div class="vertical"></div>
+                  <div class="content">
+                    <h2>EatsExpress</h2>
+                    <h1>20$ <span>Coupon</span></h1>
+                    <p>Valid till </p>
+                  </div>
+                </div>
+                <div class="copy-button">
+                  <input id="copyvalue" type="text" class="text-muted" readonly="" [(ngModel)]="textToCopy" />
+                  <button (click)="copyIt()" class="copybtn">{{buttonText}}</button>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+</section>
+<app-footer />

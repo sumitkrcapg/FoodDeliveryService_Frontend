@@ -1,0 +1,7 @@
+<div *ngIf="ratings.length !== 0">
+    <p-carousel class="px-5" [showIndicators]="false" [value]="ratings" [numVisible]="3" [numScroll]="3" [circular]="true" [autoplayInterval]="5000" [responsiveOptions]="responsiveOptions">
+        <ng-template let-rating pTemplate="item">
+            <app-single-testimonial [rating]="rating"/>
+        </ng-template>
+    </p-carousel>
+</div>

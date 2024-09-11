@@ -1,0 +1,57 @@
+<section class="vh-100 d-flex align-items-center">
+    <div class="container-fluid h-custom" style="height: max-content;">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img style="border-radius: 100%;" src="images/fooddelivery.png" class="img-fluid" alt="Sample image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style="height: max-content !important;">
+          <h1 class="py-3 fw-bold text-muted" style="font-style: italic;">Eats Express</h1>
+          <div class="alert alert-danger alert-dismissible fade show" *ngIf="isValid === false">
+              <strong>Invalid email or password</strong>
+          </div>
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <!-- Email input -->
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="loginForm.get('user_email')?.invalid && 
+            loginForm.get('user_email')?.touched">
+              <strong>Email is required</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <div class="form-outline mb-4">
+              <input type="email" id="user_email" class="form-control p-3"
+                placeholder="Enter email" formControlName="user_email" />
+            </div>
+
+            <!-- Password input -->
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="loginForm.get('user_password')?.invalid && 
+            loginForm.get('user_password')?.touched">
+              <strong>Password is required</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <div class="form-outline mb-3">
+              <input type="password" id="user_password" class="form-control p-3" placeholder="Enter password"
+                formControlName="user_password" />
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+
+              <!-- Checkbox -->
+              <div class="form-check mb-0">
+                <input class="form-check-input me-2" type="checkbox" id="rememberMe" formControlName="rememberMe" />
+                <label class="form-check-label" for="rememberMe">
+                  Remember me
+                </label>
+              </div>
+              <a href="#!" class="text-body" routerLink="/resetpassword">Forgot password?</a>
+            </div>
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-success py-2 px-3" [disabled]="loginForm.invalid">Login</button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">New to EatExpress? <a [routerLink]="['/signup']"
+                  class="link text-decoration-none">Create Account</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

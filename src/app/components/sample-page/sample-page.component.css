@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(255, 251, 247);
+}
+
+.container-fluid {
+    height: 100vh; /* Full viewport height */
+    background-color: rgb(255, 251, 247);
+}
+
+.app-image {
+    max-width: 100%;
+    height: 60vh; /* Adjust height of image */
+    object-fit: cover; /* Ensure the image covers the container */
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 2em; /* Increase heading size */
+    color: #333;
+    margin-bottom: 15px;
+}
+
+p {
+    margin: 15px 0; /* Increase margin for better spacing */
+    color: #666;
+    font-size: 1.2em; /* Increase font size */
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px; /* Increase gap between radio buttons */
+    margin: 20px 0;
+}
+
+label {
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 10px; /* Increase padding for larger input field */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2em; /* Increase font size */
+}
+
+.share-btn {
+    background-color: #ff3355;
+    color: white;
+    padding: 10px 15px; /* Increase padding */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em; /* Increase font size */
+    cursor: pointer;
+    width: 70%;
+}
+
+.share-btn:hover {
+    background-color: #e60039;
+}
+
+.download-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.download-links a {
+    display: flex;
+    align-items: center;
+    
+}
+
+.download-links img {
+    max-width: 150px; /* Make app store icons larger */
+    height: auto;
+}
+
+.content {
+    padding-left: 20px; /* Add padding to move content slightly to the left */
+}
+
+@media (min-width: 768px) {
+    .col-md-6 {
+        padding-left: 30px; /* Adjust padding for larger screens */
+    }
+}

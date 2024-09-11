@@ -1,0 +1,63 @@
+<app-header />
+<h2 class="page-title">Orders History</h2>
+
+<!-- Search Input -->
+<div  *ngIf="isAdmin === true" class="filter-container">
+  <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterOrders()" placeholder="Search by customer name" class="status-filter"/>
+</div>
+
+<!-- Orders Table -->
+<div class="table-container">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Order Id</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Order Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <p class="p-5" *ngIf="orders.length==0">no orders found!</p>
+    <tbody id="pointer">
+      <tr *ngFor="let order of filteredOrders" (click)="selectOrder(order)">
+        <th scope="row">{{order.order_id}}</th>
+        <td>{{order.customers.customer_name}}</td>
+        <td>{{order.order_date | date:'shortDate'}}</td>
+        <td>
+          <select *ngIf="isAdmin === true" [(ngModel)]="order.order_status" class="form-select p-2 w-75" (change)="updateOrderStatus(order.order_id, order.order_status)">
+            <option value="Pending" selected>Pending</option>
+            <option value="Delivered">Delivered</option>
+          </select>
+          <span *ngIf="isAdmin === false">{{order.order_status}}</span>
+          
+        </td>
+        <td>
+          <span *ngIf="order.order_status === 'Pending'" (click)="cancelOrder(order.order_id, $event)"><i class="fa-regular fa-circle-xmark fa-2xl text-danger"></i></span>
+          <span *ngIf="order.order_status === 'Delivered'" aria-label="Order Delivered"><i class="fa-solid fa-circle-check fa-2xl text-success"></i></span> <!-- Tick icon -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Order Details Section -->
+<div *ngIf="selectedOrder" class="order-details">
+  <h3>Order Details</h3>
+  <p><strong>Order ID:</strong> {{selectedOrder.order_id}}</p>
+  <p><strong>Order Date:</strong> {{selectedOrder.order_date | date:'shortDate'}}</p>
+  <p><strong>Status:</strong> {{selectedOrder.order_status}}</p>
+  <p><strong>Customer Name:</strong> {{selectedOrder.customers.customer_name}}</p>
+  <p><strong>Customer Email:</strong> {{selectedOrder.customers.customer_email}}</p>
+  <p><strong>Customer Phone:</strong> {{selectedOrder.customers.customer_phone}}</p>
+  <p><strong>Restaurant Name:</strong> {{selectedOrder.restaurants.restaurant_name}}</p>
+  <p><strong>Restaurant Address:</strong> {{selectedOrder.restaurants.restaurant_address}}</p>
+  <p><strong>Restaurant Phone:</strong> {{selectedOrder.restaurants.restaurant_phone}}</p>
+  <p><strong>Driver Name:</strong> {{selectedOrder.deliveryDrivers.driver_name}}</p>
+  <p><strong>Driver Phone:</strong> {{selectedOrder.deliveryDrivers.driver_phone}}</p>
+  <p><strong>Driver Vehicle:</strong> {{selectedOrder.deliveryDrivers.driver_vehicle}}</p>
+  
+  <!-- Button to Download PDF -->
+  <button class="download-pdf" (click)="downloadPDF()">Download PDF</button>
+</div>
+<app-footer />

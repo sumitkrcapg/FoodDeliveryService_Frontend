@@ -1,0 +1,21 @@
+.status-filter {
+    padding: 10px;
+    padding-right: 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 300px; /* Adjust width as needed */
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .search-menu {
+    position: relative;
+  }
+  
+.fa-magnifying-glass {
+  position: absolute;
+  z-index: 2;
+  right: 15px;
+  top: 16px;
+}

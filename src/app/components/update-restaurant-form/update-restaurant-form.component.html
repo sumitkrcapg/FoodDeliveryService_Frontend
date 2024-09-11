@@ -1,0 +1,48 @@
+<app-header />
+<section class="vh-100 mt-5">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form [formGroup]="addRestaurantFrom" (ngSubmit)="onSubmit()">
+
+                    <!-- restaurant_name input -->
+                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="addRestaurantFrom.get('restaurant_name')?.invalid && 
+            addRestaurantFrom.get('restaurant_name')?.touched">
+                        <strong>restaurant name is required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="restaurant_name" class="form-control p-3" placeholder="Enter your Restaurant Name"
+                            formControlName="restaurant_name" />
+                    </div>
+
+                    <!-- restaurant_address input -->
+                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="addRestaurantFrom.get('restaurant_address')?.invalid && 
+            addRestaurantFrom.get('restaurant_address')?.touched">
+                        <strong>restaurant address is required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="restaurant_address" class="form-control p-3"
+                            placeholder="Enter Restaurant Address" formControlName="restaurant_address" />
+                    </div>
+
+                    <!-- restaurant_phone input -->
+                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="addRestaurantFrom.get('restaurant_phone')?.invalid && 
+            addRestaurantFrom.get('restaurant_phone')?.touched">
+                        <strong>restaurant phone is required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="phone" class="form-control p-3"
+                            placeholder="Enter your phone number" formControlName="restaurant_phone" />
+                    </div>
+                    <div class="text-center text-lg-start mt-4 pt-2 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success px-3 py-2" [disabled]="addRestaurantFrom.invalid">Update Restaurant</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer />

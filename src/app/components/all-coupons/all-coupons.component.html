@@ -1,0 +1,23 @@
+<app-header />
+<div *ngFor="let coupon of coupons">
+    <div class="profile-container d-flex row">
+        <div class="card">
+            <div class="main">
+              <div class="co-img">
+                <img src="images/fooddelivery.png" alt="">
+              </div>
+              <div class="vertical"></div>
+              <div class="content">
+                <h2>EatsExpress</h2>
+                <h1>{{coupon.discount_amount}}$ <span>Coupon</span></h1>
+                <p>Valid till {{coupon.expiry_date}}</p>
+              </div>
+            </div>
+            <div class="copy-button">
+              <input [id]="coupon.coupon_id" type="text" class="text-muted" readonly="" [value]="coupon.coupon_code">
+              <button (click)="copyIt(coupon.coupon_id)" class="copybtn">COPY</button>
+            </div>
+          </div>
+    </div>
+</div>
+<app-footer />

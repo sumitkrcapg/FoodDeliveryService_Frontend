@@ -1,0 +1,8 @@
+<div class="card my-3 text-center mx-auto restaurant-card" style="width: 20rem;" (click)="getMenuItemsByRestaurantId(restaurant.restaurant_id)">
+    <img class="card-img-top w-100" [src]="imageUrl" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{restaurant.restaurant_name}}</h5>
+      <i class="fa-solid fa-star"></i> 4 <i class="bi bi-dot"></i> 20-25 mins
+      <p class="card-text">{{restaurant.restaurant_address}}</p>
+    </div>
+</div>

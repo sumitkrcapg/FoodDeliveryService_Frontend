@@ -1,0 +1,10 @@
+::ng-deep .p-carousel .p-carousel-content .p-carousel-prev, ::ng-deep .p-carousel .p-carousel-content .p-carousel-next {
+    border:none !important;
+    background: none !important;
+    color: green !important;
+    margin: 50px !important;
+}
+
+::ng-deep .p-carousel-item {
+    display: flex;
+}

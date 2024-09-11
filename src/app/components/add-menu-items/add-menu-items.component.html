@@ -1,0 +1,59 @@
+<app-header />
+<section class="vh-100 mt-5">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form [formGroup]="addMenuItemForm" (ngSubmit)="onSubmit()">
+
+                    <!-- item_name input -->
+                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="addMenuItemForm.get('item_name')?.invalid && 
+            addMenuItemForm.get('item_name')?.touched">
+                        <strong>item name is required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="item_name" class="form-control p-3"
+                            placeholder="Enter your item Name" formControlName="item_name" />
+                    </div>
+
+                    <!-- item_description input -->
+                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="addMenuItemForm.get('item_description')?.invalid && 
+            addMenuItemForm.get('item_description')?.touched">
+                        <strong>item description is required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="item_description" class="form-control p-3"
+                            placeholder="Enter Item Description" formControlName="item_description" />
+                    </div>
+
+                    <!-- item_price input -->
+                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="addMenuItemForm.get('item_price')?.invalid && 
+            addMenuItemForm.get('item_price')?.touched">
+                        <strong>item price is required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="item_price" class="form-control p-3"
+                            placeholder="Enter your item price" formControlName="item_price" />
+                    </div>
+
+                    <!-- restaurant_id input -->
+                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="addMenuItemForm.get('restaurant_id')?.invalid && 
+            addMenuItemForm.get('restaurant_id')?.touched">
+                        <strong>restaurant id is required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="restaurant_id" class="form-control p-3"
+                            placeholder="Enter your restaurant id" formControlName="restaurant_id" />
+                    </div>
+                    <div class="text-center text-lg-start mt-4 pt-2 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success px-3 py-2" [disabled]="addMenuItemForm.invalid">Add Menu Item</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer />

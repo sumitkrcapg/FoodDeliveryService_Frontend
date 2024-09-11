@@ -1,0 +1,8 @@
+.restaurant-card {
+    cursor: pointer;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}

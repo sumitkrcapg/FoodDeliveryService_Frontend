@@ -1,0 +1,41 @@
+.banner {
+    background-image: url("/images/banner.jpg");
+    background-size: cover;
+    height: 70vh;
+}
+
+.banner-header {
+    padding: 10px;
+    color: #fff;
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+.banner form {
+    width: 40%;
+}
+
+.banner form input {
+    padding: 10px;
+}
+
+::ng-deep .p-carousel .p-carousel-content .p-carousel-prev, ::ng-deep .p-carousel .p-carousel-content .p-carousel-next {
+    border:none !important;
+    background: none !important;
+    color: green !important;
+    margin: 20px !important;
+}
+
+.accordion-item {
+    margin-bottom: 1rem;
+}
+
+.accordion-button {
+    background: #FFC836;
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+}

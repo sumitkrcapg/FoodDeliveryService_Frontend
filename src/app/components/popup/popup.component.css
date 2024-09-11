@@ -1,0 +1,11 @@
+.popup_message {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    padding: 10px;
+}
+
+.popup_message img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}

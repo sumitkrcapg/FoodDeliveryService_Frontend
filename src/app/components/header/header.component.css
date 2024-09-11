@@ -1,0 +1,31 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 8px 7px -7px black;
+}
+
+.brand-image {
+    width: 50px;
+    border-radius: 100%;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navbar-collapse ul li {
+    margin: 0 10px;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #FFCF4D !important;
+}
+
+span {
+    top: 0px;
+    right: 50px;
+    height: 20px;
+    width: 20px;
+}

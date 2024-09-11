@@ -1,0 +1,42 @@
+<app-header />
+<section #modal class="profile-section">
+    <div class="profile-container">
+      <div class="profile-card d-flex justify-content-between">
+        <div class="d-flex">
+          <div>
+            <img class="profile-img" [src]="imageUrl" alt="Profile image">
+          </div>
+          <div class="text-start ps-4">
+            <h3 class="profile-title">{{customer.customer_name}}</h3>
+            <p class="profile-email">{{customer.customer_email}}</p>
+            <p class="profile-phone">{{customer.customer_phone}}</p>
+            <p class="profile-phone">{{customer.customer_role}}</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center gap-2">
+          <div class="d-flex flex-column gap-2">
+            <button type="button" class="btn btn-warning" (click)="updateProfile()"><i class="fa-regular fa-pen-to-square"></i> Edit Profile</button>
+            <button *ngIf="isAdmin===true" type="button" class="btn btn-primary" routerLink="/customers"><i class="fa-solid fa-users-between-lines"></i> All Customers</button>
+            <button type="button" class="btn btn-danger" (click)="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></button>
+          </div>
+          <div class="d-flex flex-column gap-2">
+            <button type="button" class="btn btn-success" routerLink="/orders"><i class="fa-solid fa-clipboard-list"></i><span *ngIf="isAdmin===true"> All</span> Orders</button>
+            <button *ngIf="isAdmin===true" type="button" class="btn btn-primary" routerLink="/drivers"><i class="fa-solid fa-motorcycle"></i> All Drivers</button>
+            <button type="button" class="btn btn-danger" (click)="deleteProfile($event)" >Delete Account <i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="favRestaurants.length !== 0" class="row py-5">
+      <h2 class="text-center mb-3">My Favorite Restaurants</h2>
+      <div class="col d-flex justify-content-center flex-column align-items-center" *ngFor="let restaurant of favRestaurants">
+          <app-single-restaurant [restaurant]="restaurant"/>
+          <button type="button" class="btn btn-danger py-2" (click)="removefromFavorites(restaurant.restaurant_id)">Remove from Favorites <i class="fa-solid fa-xmark"></i></button>
+      </div>
+  </div>
+  <div *ngIf="ratings.length !== 0" class="py-5">
+    <h2 class="text-center">My Reviews</h2>
+    <app-testimonial [ratings]="ratings" />
+  </div>
+</section>  
+<app-footer />

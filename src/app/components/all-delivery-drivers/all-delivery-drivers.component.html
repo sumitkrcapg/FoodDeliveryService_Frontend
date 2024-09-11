@@ -1,0 +1,14 @@
+<app-header />
+<div class="py-4">
+    <h1 class="text-center py-2">All Delivery Drivers</h1>
+    <div class="search-menu d-flex flex-column justify-content-center align-items-center mb-4">
+        <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterDrivers()" placeholder="Search by driver name" class="status-filter"/>
+        <i class="fa-solid fa-magnifying-glass text-secondary"></i>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center" *ngFor="let driver of filteredDrivers"> 
+            <app-single-delivery-driver [deliveryDriver]="driver"/>
+        </div>
+    </div>
+</div>
+<app-footer />

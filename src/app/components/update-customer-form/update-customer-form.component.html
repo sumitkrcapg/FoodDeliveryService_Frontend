@@ -1,0 +1,48 @@
+<app-header />
+<section class="my-5 d-flex align-items-center">
+    <div class="container-fluid h-custom">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="w-50">
+                <form [formGroup]="updateCustomerForm" (ngSubmit)="onSubmit()">
+
+                    <!-- name input -->
+                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="updateCustomerForm.get('customer_name')?.invalid && 
+            updateCustomerForm.get('customer_name')?.touched">
+                        <strong>Name is required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="customer_name" class="form-control p-3" placeholder="Enter your name"
+                            formControlName="customer_name" />
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="updateCustomerForm.get('customer_email')?.invalid && 
+            updateCustomerForm.get('customer_email')?.touched">
+                        <strong>Email is required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="email" id="customer_email" class="form-control p-3"
+                            placeholder="Enter your email address" formControlName="customer_email" />
+                    </div>
+
+                    <!-- phone input -->
+                    <div class="alert alert-danger alert-dismissible fade show" *ngIf="updateCustomerForm.get('customer_phone')?.invalid && 
+            updateCustomerForm.get('customer_phone')?.touched">
+                        <strong>Phone is required</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="customer_phone" class="form-control p-3"
+                            placeholder="Enter your phone number" formControlName="customer_phone" />
+                    </div>
+                    <div class="text-center text-lg-start mt-4 pt-2 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success py-2 px-3" [disabled]="updateCustomerForm.invalid">Update Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer />

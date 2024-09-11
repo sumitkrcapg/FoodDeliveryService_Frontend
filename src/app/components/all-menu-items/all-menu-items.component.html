@@ -1,0 +1,50 @@
+<app-header />
+<div>
+    <div class="row p-3">
+        <div class="col">
+            <img class="restaurant-image rounded" [src]="imageUrl" alt="">
+        </div>
+        <div class="col ps-4">
+            <h1>{{restaurant.restaurant_name}}</h1>
+            <p class="text-secondary"><i class="fa-solid fa-location-dot"></i> {{restaurant.restaurant_address}}</p>
+            <p class="text-secondary"><i class="fa-solid fa-phone"></i> {{restaurant.restaurant_phone}}</p>
+            <p class="text-secondary"><span style="color: #FFCF4D;">Open now</span> - 11 Am - 11Pm <i class="fa-solid fa-circle-info ms-2"></i></p>
+            <div class="d-flex gap-3">
+                <button *ngIf="isAdmin===true" type="button" class="btn btn-success mt-3" routerLink="/addmenu"><i class="fa-solid fa-burger"></i> Add Menu</button>
+                <button *ngIf="isAdmin===true" type="button" class="btn btn-warning mt-3" (click)="updateRestaurant()"><i class="fa-regular fa-pen-to-square"></i> Update Restaurant</button>
+                <button *ngIf="isAdmin===true" type="button" class="btn btn-danger mt-3" (click)="deleteRestuarant($event)"><i class="fa-solid fa-trash"></i> Delete Restaurant</button>
+            </div>
+            <div class="d-flex gap-3 mt-3">
+                <a target="_blank" href="https://www.google.com/maps/place/GAR+Infobahn+Tower+3/@17.403501,78.3288669,17z/data=!4m14!1m7!3m6!1s0x3bcb956dd57d651d:0x562b19d797fc8162!2sGAR+Infobahn+Tower+3!8m2!3d17.4034959!4d78.3314418!16s%2Fg%2F11q9s5xs_5!3m5!1s0x3bcb956dd57d651d:0x562b19d797fc8162!8m2!3d17.4034959!4d78.3314418!16s%2Fg%2F11q9s5xs_5?entry=ttu&g_ep=EgoyMDI0MDkwNC4wIKXMDSoASAFQAw%3D%3D">
+                    <button type="button" class="btn btn-outline-success">
+                        <i class="fa-solid fa-diamond-turn-right"></i> Directions
+                    </button>
+                </a>
+                <button type="button" class="btn btn-outline-success" (click)="addFavoriteRestaurant()"><i class="bi bi-bookmark-plus"></i> Add to Favorites</button>
+                <button type="button" class="btn btn-outline-success"><i class="fa-solid fa-share"></i> Share</button>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center p-5">
+        <div>
+            <h3>All Menus</h3>
+            <button *ngIf="sortToggle" type="button" class="btn btn-warning mt-2" (click)="sortMenuItems()" ><i class="bi bi-filter"></i> Price: High to Low <i class="bi bi-arrow-down"></i></button>
+            <button *ngIf="!sortToggle" type="button" class="btn btn-warning mt-2" (click)="sortMenuItems()" ><i class="bi bi-filter"></i> Price: Low to High <i class="bi bi-arrow-up"></i></button>
+        </div>
+        <div class="search-menu">
+            <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterMenus()" placeholder="Search by menu item name" class="status-filter"/>
+            <i class="fa-solid fa-magnifying-glass text-secondary"></i>
+        </div>
+    </div>
+    <div class="row">
+        <p *ngIf="filteredMenu.length === 0" class="pb-5 ps-5">no menu found!</p>
+        <div class="col d-flex justify-content-center" *ngFor="let menutItem of filteredMenu">
+            <app-single-menu-item [menuItem]="menutItem" [restaurantId]="restaurantId" [isAdmin]="isAdmin"/>
+        </div>
+    </div>
+    <div *ngIf="ratings.length !== 0">
+        <h2 class="text-center mt-5">Customer Reviews</h2>
+        <app-testimonial [ratings]="ratings" />
+    </div>
+</div>
+<app-footer />

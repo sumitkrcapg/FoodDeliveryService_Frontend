@@ -1,0 +1,12 @@
+<div class="card my-3 text-center" style="width: 20rem;">
+    <img class="card-img-top" [src]="imageUrl" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{menuItem.item_name}}</h5>
+      <p class="card-text">{{menuItem.item_description}}</p>
+      <p class="card-text">{{menuItem.item_price}}</p>
+      <button class="btn btn-success" *ngIf="!doesPrtoductExistOnTheCart(menuItem.item_id)" (click)="addToCart({item_id : menuItem.item_id, item_name : menuItem.item_name, item_description : menuItem.item_description, item_price : menuItem.item_price, quantity : 1})">Add to Cart <i class="bi bi-cart3"></i></button>
+      <button class="btn btn-danger" *ngIf="doesPrtoductExistOnTheCart(menuItem.item_id)" (click)="removeItem({item_id : menuItem.item_id, item_name : menuItem.item_name, item_description : menuItem.item_description, item_price : menuItem.item_price, quantity : 1})">Remove from Cart <i class="bi bi-cart3"></i></button>
+      <button *ngIf="isAdmin===true" class="btn btn-warning my-2" (click)="updateMenuItem()"><i class="fa-regular fa-pen-to-square"></i> Update Menu</button>
+      <button *ngIf="isAdmin===true" class="btn btn-danger" (click)="deleteMenuItem($event)"><i class="fa-solid fa-trash"></i> Delete Menu</button>
+    </div>
+</div>
